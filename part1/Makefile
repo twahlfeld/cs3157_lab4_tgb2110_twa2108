@@ -5,11 +5,11 @@ INCLUDES =
 CFLAGS	= -g -Wall $(INCLUDES)
 CXXFLAGS	= -g -Wall $(INCLUDES)
 
-LDFLAGS = -g
+LDFLAGS = -g -L ./
 LDLIBS = -lmylist
 
 .PHONY: default
-default: mdb-add mdb-lookup libmylist.a
+default: libmylist.a mdb-add mdb-lookup
 
 libmylist.a: mylist.o
 	ar rc libmylist.a mylist.o
