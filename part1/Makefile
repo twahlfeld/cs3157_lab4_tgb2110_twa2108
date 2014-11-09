@@ -1,14 +1,20 @@
 CC = gcc
 CXX = g++
 
-INCLUDES = -I ../../lab3/part1
+INCLUDES =
 CFLAGS	= -g -Wall $(INCLUDES)
 CXXFLAGS	= -g -Wall $(INCLUDES)
 
-LDFLAGS = -g -L ../../lab3/part1
+LDFLAGS = -g
 LDLIBS = -lmylist
 
-main: mdb-add mdb-lookup
+.PHONY: default
+default: mdb-add mdb-lookup libmylist.a
+
+libmylist.a: mylist.o
+	ar rc libmylist.a mylist.o
+	ranlib libmylist.a
+
 
 mdb-add: mdb-add.o mdb.o
 
